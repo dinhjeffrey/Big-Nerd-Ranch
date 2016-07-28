@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ConversionViewController.swift
 //  WordTrotter
 //
 //  Created by jeffrey dinh on 7/28/16.
@@ -8,7 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ConversionViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+    }
 
 
     
@@ -32,5 +37,21 @@ class ViewController: UIViewController {
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
 }
-
