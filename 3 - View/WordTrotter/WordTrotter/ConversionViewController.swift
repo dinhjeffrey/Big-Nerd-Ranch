@@ -16,20 +16,44 @@ class ConversionViewController: UIViewController {
 
     // MARK: - IBActions
     @IBAction func fahrenheitEditingChanged(sender: UITextField) {
-        if let text = textField.text where !text.isEmpty {
-            celsiusLabel.text = textField.text
+        // updates fahrenheitValue whenever the text field changes, if no text, then value is nil. Check if text can be a Double, i.e.: "1.2.3" cannot
+        if let text = textField.text, value = Double(text) {
+            fahrenheitValue = value
         } else {
-            celsiusLabel.text = "???"
+            fahrenheitValue = nil
         }
     }
     @IBAction func dismissKeyboard(sender: AnyObject) {
         textField.resignFirstResponder()
     }
     
+    // MARK: - Constants and variables
+    var fahrenheitValue: Double? { // double because user might not have typed in a number
+        didSet { // property observer is called whenever a property's value changes. **Note: property obs are not triggered when property value is changed from within an initializer
+            updateCelsiusLabel() // whenever fahrenheitValue changes, update the celsiusLabel which calls the computed propety celsiusValue
+        }
+    }
+    var celsiusValue: Double? { // computed property. value is computed based on fahrenheitValue, if there is no fahrenheitValue, then return nil
+        if let value = fahrenheitValue {
+            return (value - 32) * (5/9)
+        } else {
+            return nil
+        }
+    }
+    
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+    
+    // MARK: - Methods
+    func updateCelsiusLabel() { // if there is a value for celsius, we want to update the text, or set it to ??? if nil. called whenever fahrenheitValue changes
+        if let value = celsiusValue {
+            celsiusLabel.text = "\(value)"
+        } else {
+            celsiusLabel.text = "???"
+        }
     }
 
 
