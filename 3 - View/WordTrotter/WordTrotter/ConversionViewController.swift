@@ -22,6 +22,9 @@ class ConversionViewController: UIViewController {
             celsiusLabel.text = "???"
         }
     }
+    @IBAction func dismissKeyboard(sender: AnyObject) {
+        textField.resignFirstResponder()
+    }
     
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {

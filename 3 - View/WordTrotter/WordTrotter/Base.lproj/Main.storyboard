@@ -58,6 +58,7 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.95686274509803915" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="IfW-2H-hzB" firstAttribute="centerX" secondItem="tcp-bh-04N" secondAttribute="centerX" id="3xt-Ih-7m6"/>
                             <constraint firstItem="tZn-Wz-uzM" firstAttribute="top" secondItem="IfW-2H-hzB" secondAttribute="bottom" constant="8" id="5EC-WA-D1A"/>
@@ -71,6 +72,9 @@
                             <constraint firstItem="B6b-6m-R03" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="u7d-sW-ihe"/>
                             <constraint firstItem="tcp-bh-04N" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uLK-Xc-eQU"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="ycV-sA-TwB" appends="YES" id="uhH-r7-C6M"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="celsiusLabel" destination="DUu-6q-6fQ" id="lCr-Ia-e0H"/>
@@ -78,6 +82,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ycV-sA-TwB">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="BYZ-38-t0r" id="hb5-pU-9sN"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="386" y="341"/>
         </scene>
