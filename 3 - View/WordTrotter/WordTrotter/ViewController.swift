@@ -9,23 +9,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // To create a CGRect, you use its initializer and pass in values for x,y,width,height
-        let firstFrame = CGRect(x: 160, y: 240, width: 100, height: 150)
-        // creating the view using the dimension of firstFrame
-        let firstView = UIView(frame: firstFrame)
-        // setting the background color on the view
-        firstView.backgroundColor = UIColor.blueColor()
-        // adding subview to view
-        view.addSubview(firstView)
-        
-        let secondFrame = CGRect(x: 20, y: 30, width: 50, height: 50)
-        let secondView = UIView(frame: secondFrame)
-        secondView.backgroundColor = UIColor.greenColor()
-        firstView.addSubview(secondView)
-    }
 
 
     
