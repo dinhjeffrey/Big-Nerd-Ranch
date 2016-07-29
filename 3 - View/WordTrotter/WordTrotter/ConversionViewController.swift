@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ConversionViewController: UIViewController {
+class ConversionViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - IBOutlets
     @IBOutlet weak var celsiusLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
-
+    
     // MARK: - IBActions
     @IBAction func fahrenheitEditingChanged(sender: UITextField) {
         // updates fahrenheitValue whenever the text field changes, if no text, then value is nil. Check if text can be a Double, i.e.: "1.2.3" cannot
@@ -45,7 +45,7 @@ class ConversionViewController: UIViewController {
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     // MARK: - Methods
@@ -66,8 +66,18 @@ class ConversionViewController: UIViewController {
         nf.maximumFractionDigits = 1
         return nf
     }()
-
-
+    
+    // UITextFieldDelegate Protocols
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let existingTextHasDecimalSeparator = textField.text?.rangeOfString(".")
+        let replacementTextHasDecimalSeparator = string.rangeOfString(".")
+        
+        if existingTextHasDecimalSeparator != nil && replacementTextHasDecimalSeparator != nil {
+            return false
+        } else {
+            return true
+        }
+    }
     
     
     
@@ -105,5 +115,7 @@ class ConversionViewController: UIViewController {
     
     
     
-
+    
+    
+    
 }
