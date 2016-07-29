@@ -41,6 +41,7 @@ class ConversionViewController: UIViewController {
         }
     }
     
+    
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,11 +51,21 @@ class ConversionViewController: UIViewController {
     // MARK: - Methods
     func updateCelsiusLabel() { // if there is a value for celsius, we want to update the text, or set it to ??? if nil. called whenever fahrenheitValue changes
         if let value = celsiusValue {
-            celsiusLabel.text = "\(value)"
+            celsiusLabel.text = numberFormatter.stringFromNumber(value)
         } else {
             celsiusLabel.text = "???"
         }
     }
+    // using a closure to instantiate the number formatter.
+    // number formatter customize the display of a number
+    // displays no more than 1 fractional digit
+    let numberFormatter: NSNumberFormatter = {
+        let nf = NSNumberFormatter()
+        nf.numberStyle = .DecimalStyle
+        nf.minimumFractionDigits = 0
+        nf.maximumFractionDigits = 1
+        return nf
+    }()
 
 
     
