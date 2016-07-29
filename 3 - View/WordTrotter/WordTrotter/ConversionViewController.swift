@@ -72,11 +72,18 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
         let existingTextHasDecimalSeparator = textField.text?.rangeOfString(".")
         let replacementTextHasDecimalSeparator = string.rangeOfString(".")
         
-        let letters = NSCharacterSet.letterCharacterSet()
-        let range = string.rangeOfCharacterFromSet(letters)
+        let characterSet = NSMutableCharacterSet() //create an empty mutable set
+        characterSet.formUnionWithCharacterSet(NSCharacterSet.decimalDigitCharacterSet())
+        // allow decimal point
+        characterSet.addCharactersInString(".")
+        let range = string.rangeOfCharacterFromSet(characterSet)
+        // allow backspace
+        let  char = string.cStringUsingEncoding(NSUTF8StringEncoding)!
+        let isBackSpace = strcmp(char, "\\b")
         
         if (existingTextHasDecimalSeparator != nil && replacementTextHasDecimalSeparator != nil)
-            || range != nil {
+            || (range == nil && isBackSpace != -92)
+        {
             return false
         } else {
             return true
