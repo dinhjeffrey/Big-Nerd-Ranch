@@ -37,7 +37,8 @@ class MapViewController: UIViewController {
         // adds constraints programmatically
         // anchors are properties on the view that correspond to attributes that you might want to constain to an anchor on another view
         // creates a constraint between two anchors
-        let topConstraint = segmentedControl.topAnchor.constraintEqualToAnchor(view.topAnchor)
+        // top layout guide will allow content to not underlap the status bar or navigation bar at the top of the screen
+        let topConstraint = segmentedControl.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor, constant: 8)
         let leadingConstraint = segmentedControl.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor)
         let trailingConstraint = segmentedControl.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor)
         
