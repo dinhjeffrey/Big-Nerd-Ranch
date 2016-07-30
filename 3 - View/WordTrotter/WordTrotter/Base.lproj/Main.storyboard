@@ -95,11 +95,7 @@
         <!--Map-->
         <scene sceneID="3Ri-3J-jrw">
             <objects>
-                <viewController id="vwG-KB-Jde" sceneMemberID="viewController">
-                    <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="k4d-BH-ZNT">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </mapView>
+                <viewController id="vwG-KB-Jde" customClass="MapViewController" customModule="WordTrotter" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="1" title="Map" image="MapIcon" selectedImage="MapIcon" id="19K-Ju-nE7"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ne-fM-tM5" userLabel="First Responder" sceneMemberID="firstResponder"/>

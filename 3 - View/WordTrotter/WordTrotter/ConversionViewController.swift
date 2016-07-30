@@ -40,12 +40,20 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
             return nil
         }
     }
+    let colors: [UIColor] = [.blackColor(), .blueColor(), .brownColor(), .clearColor(), .cyanColor(), .redColor(), .orangeColor(), .purpleColor(), .greenColor(), .yellowColor()]
     
     
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        print("conversion view loaded")
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        // changes background color on load
+        let randomNum = Int(arc4random_uniform(UInt32(colors.count - 1)))
+        view.backgroundColor = colors[randomNum]
     }
     
     // MARK: - Methods
