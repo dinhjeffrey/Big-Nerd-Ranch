@@ -10,6 +10,9 @@ import UIKit
 import MapKit
 
 class MapViewController: UIViewController {
+    
+    // Constants and variables
+    let mapView = MKMapView()
 
     // View Controller lifecycle
     override func viewDidLoad() {
@@ -21,7 +24,7 @@ class MapViewController: UIViewController {
     // when a view controller is asked for its view and its view is nil, loadView() method is called
     override func loadView() {
         // create a map view
-        let mapView = MKMapView()
+        
         
         // set it as the view of this view controller
         view = mapView
@@ -30,6 +33,11 @@ class MapViewController: UIViewController {
         let segmentedControl = UISegmentedControl(items: ["Standard", "Hybrid", "Satellite"])
         segmentedControl.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
         segmentedControl.selectedSegmentIndex = 0
+        
+        segmentedControl.addTarget(
+            self,
+            action: #selector(MapViewController.mapTypeChanged(_:)),
+            forControlEvents: .ValueChanged)
         
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(segmentedControl)
@@ -46,6 +54,20 @@ class MapViewController: UIViewController {
         topConstraint.active = true
         leadingConstraint.active = true
         trailingConstraint.active = true
+    }
+    
+    // Methods
+    func mapTypeChanged(segControl: UISegmentedControl) {
+        switch segControl.selectedSegmentIndex {
+        case 0:
+            mapView.mapType = .Standard
+        case 1:
+            mapView.mapType = .Hybrid
+        case 2:
+            mapView.mapType = .Satellite
+        default:
+            break
+        }
     }
     
     
