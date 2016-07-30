@@ -92,6 +92,40 @@
             </objects>
             <point key="canvasLocation" x="1854" y="719"/>
         </scene>
+        <!--Web View Controller-->
+        <scene sceneID="8Ed-wO-gaY">
+            <objects>
+                <viewController id="NZN-32-wI4" customClass="WebViewController" customModule="WordTrotter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="71u-9y-AEm"/>
+                        <viewControllerLayoutGuide type="bottom" id="cXx-mk-HEd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="X4h-Fm-aH7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TSX-iw-t3I">
+                                <rect key="frame" x="0.0" y="20" width="600" height="531"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cXx-mk-HEd" firstAttribute="top" secondItem="TSX-iw-t3I" secondAttribute="bottom" id="4mV-Hb-xXU"/>
+                            <constraint firstAttribute="trailing" secondItem="TSX-iw-t3I" secondAttribute="trailing" id="8Un-Iz-MDL"/>
+                            <constraint firstItem="TSX-iw-t3I" firstAttribute="top" secondItem="71u-9y-AEm" secondAttribute="bottom" id="9bY-hj-cA4"/>
+                            <constraint firstItem="TSX-iw-t3I" firstAttribute="leading" secondItem="X4h-Fm-aH7" secondAttribute="leading" id="bCo-JW-M6a"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="8CS-6y-QU7"/>
+                    <connections>
+                        <outlet property="webView" destination="TSX-iw-t3I" id="jof-0l-fxC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="coq-nJ-DD8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1860" y="1384"/>
+        </scene>
         <!--Map-->
         <scene sceneID="3Ri-3J-jrw">
             <objects>
@@ -114,6 +148,7 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="6i4-Xl-p00"/>
                         <segue destination="vwG-KB-Jde" kind="relationship" relationship="viewControllers" id="Wil-eH-Mps"/>
+                        <segue destination="NZN-32-wI4" kind="relationship" relationship="viewControllers" id="oXY-5E-81h"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9fF-gi-WDK" userLabel="First Responder" sceneMemberID="firstResponder"/>
