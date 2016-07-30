@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate {
     
     // Constants and variables
     let mapView = MKMapView()
@@ -54,6 +54,28 @@ class MapViewController: UIViewController {
         topConstraint.active = true
         leadingConstraint.active = true
         trailingConstraint.active = true
+        
+        let latitude:CLLocationDegrees = 33.6086549608 //insert latitutde
+        
+        let longitude:CLLocationDegrees = -117.929614227 //insert longitude
+        
+        let latDelta:CLLocationDegrees = 0.002
+        
+        let lonDelta:CLLocationDegrees = 0.002
+        
+        let span:MKCoordinateSpan = MKCoordinateSpanMake(latDelta, lonDelta)
+        
+        let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+        
+        let region:MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+        
+        mapView.setRegion(region, animated: true)
+        
+        let dropPin = MKPointAnnotation()
+        dropPin.coordinate = location
+        dropPin.title = "Newport Beach"
+        dropPin.subtitle = "Pokemon Go ^^"
+        mapView.addAnnotation(dropPin)
     }
     
     // Methods
@@ -100,5 +122,8 @@ class MapViewController: UIViewController {
     
     
     
+    
 
 }
+
+

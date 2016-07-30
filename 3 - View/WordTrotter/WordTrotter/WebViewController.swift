@@ -12,7 +12,7 @@ import WebKit
 class WebViewController: UIViewController {
     // IBOutlets
     @IBOutlet weak var webView: UIWebView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
     
     // View Controller lifecycle
     override func viewDidLoad() {

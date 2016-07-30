@@ -66,10 +66,10 @@
 		00D5C7C61D4A7A1400FEEC0F /* WordTrotter */ = {
 			isa = PBXGroup;
 			children = (
+				00D5C7DE1D4C0CAB00FEEC0F /* MapViewController.swift */,
 				00D5C7DA1D4A931000FEEC0F /* ConversionViewController.swift */,
 				003E7BA71D4C32A800007C86 /* WebViewController.swift */,
 				00D5C7CB1D4A7A1400FEEC0F /* Main.storyboard */,
-				00D5C7DE1D4C0CAB00FEEC0F /* MapViewController.swift */,
 				00D5C7D91D4A7A1B00FEEC0F /* Supporting Files */,
 			);
 			path = WordTrotter;
