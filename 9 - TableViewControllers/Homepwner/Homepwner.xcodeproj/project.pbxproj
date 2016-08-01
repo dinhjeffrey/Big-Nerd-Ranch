@@ -12,6 +12,8 @@
 		003E7BEA1D4FC7F200007C86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 003E7BE91D4FC7F200007C86 /* Assets.xcassets */; };
 		003E7BED1D4FC7F200007C86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003E7BEB1D4FC7F200007C86 /* LaunchScreen.storyboard */; };
 		00A6E9B61D4FF4440099A450 /* ItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A6E9B51D4FF4440099A450 /* ItemsTableViewController.swift */; };
+		00A6E9B81D4FF5370099A450 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A6E9B71D4FF5370099A450 /* Item.swift */; };
+		00A6E9BA1D4FFF310099A450 /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A6E9B91D4FFF310099A450 /* ItemStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		003E7BEC1D4FC7F200007C86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		003E7BEE1D4FC7F200007C86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00A6E9B51D4FF4440099A450 /* ItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsTableViewController.swift; sourceTree = "<group>"; };
+		00A6E9B71D4FF5370099A450 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		00A6E9B91D4FFF310099A450 /* ItemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,8 @@
 			isa = PBXGroup;
 			children = (
 				00A6E9B51D4FF4440099A450 /* ItemsTableViewController.swift */,
+				00A6E9B71D4FF5370099A450 /* Item.swift */,
+				00A6E9B91D4FFF310099A450 /* ItemStore.swift */,
 				003E7BE61D4FC7F200007C86 /* Main.storyboard */,
 				003E7BF41D4FC7FB00007C86 /* Supporting Files */,
 			);
@@ -144,6 +150,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				00A6E9B61D4FF4440099A450 /* ItemsTableViewController.swift in Sources */,
+				00A6E9B81D4FF5370099A450 /* Item.swift in Sources */,
+				00A6E9BA1D4FFF310099A450 /* ItemStore.swift in Sources */,
 				003E7BE31D4FC7F200007C86 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,6 +9,10 @@
 import UIKit
 
 class ItemsTableViewController: UITableViewController {
+    
+    // MARK:- Constants and variables
+    // dependency injection
+    var itemStore: ItemStore!
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -16,6 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // itemStore set externally because of dependency inversion principle
+        // 1. High-level objects should not depend on low-level objects. Both should depend on abstractions
+        // 2. Abstractions should not dpeend on details. Details should depend on abstractions
+        
+        // makes the itemStore property in the ITVC to be an instance of ItemStore()
+        // Create an ItemStore
+        let itemStore = ItemStore()
+        
+        // Access the ItemsViewController and set its item store
+        let itemsController = window!.rootViewController as! ItemsTableViewController
+        itemsController.itemStore = itemStore
+        
         return true
     }
 
