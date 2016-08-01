@@ -17,7 +17,7 @@ class WebViewController: UIViewController {
     // View Controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        let url = NSURL(string: "https://www.bignerdranch.com")!
+        let url = NSURL(string: "http://www.dindledoo.com/")!
         webView.loadRequest(NSURLRequest(URL: url))
         
 
