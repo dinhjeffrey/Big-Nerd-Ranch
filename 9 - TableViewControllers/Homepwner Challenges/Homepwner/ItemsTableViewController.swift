@@ -16,29 +16,47 @@ class ItemsTableViewController: UITableViewController {
     struct Storyboard {
         static let cell = "UITableViewCell"
     }
+    var items = [[Item]]()
     
     // MARK: - View Controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Get the height of the status bar
         let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
         
         let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
         tableView.contentInset = insets
         tableView.scrollIndicatorInsets = insets
+        
+        let items = itemStore.allItems
+        var itemsSeperatedByValue = [[Item]](count: 2, repeatedValue: [])
+        for item in items {
+            if item.valueInDollars > 50 {
+                itemsSeperatedByValue[0].append(item)
+            } else {
+                itemsSeperatedByValue[1].append(item)
+            }
+        }
+        self.items = itemsSeperatedByValue
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return items.count
     }
-
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "> $50"
+        }
+        return "<= $50"
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemStore.allItems.count
+        return items[section].count
     }
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Get a new or recycled cell
@@ -47,12 +65,19 @@ class ItemsTableViewController: UITableViewController {
         // Set the text on the cell with the description of the item
         // that is at the nth index of items, where n = row this cell
         // will appear in on the tableview
-        let item = itemStore.allItems[indexPath.row]
-
-        cell.textLabel?.text = item.name
-        cell.detailTextLabel?.text = "$\(item.valueInDollars)"
-
+        
+        print("section is \(indexPath.section)")
+        print("row is \(indexPath.row)")
+        let cellTitle = items[indexPath.section][indexPath.row]
+        
+        cell.textLabel?.text = cellTitle.name
+        cell.detailTextLabel?.text = "$\(cellTitle.valueInDollars)"
+        
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("selected section: \(indexPath.section) row: \(indexPath.row)")
     }
 }
 
