@@ -38,7 +38,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             action: #selector(MapViewController.mapTypeChanged(_:)),
             forControlEvents: .ValueChanged)
         
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false // resizing mask will not be translated into constraints. set autolayout size dynamically
         view.addSubview(segmentedControl)
         
         // adds constraints programmatically
@@ -88,7 +88,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         btn.setTitle("Cycle", forState: UIControlState.Normal)
         btn.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
         btn.addTarget(self, action: #selector(MapViewController.cycleAnnotations(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-        btn.translatesAutoresizingMaskIntoConstraints = false // set autolayout size dynamically
+        btn.translatesAutoresizingMaskIntoConstraints = false // resizing mask will not be translated into constraints. set autolayout size dynamically
         view.addSubview(btn) // add to view as subview
         
         // create button constraints
