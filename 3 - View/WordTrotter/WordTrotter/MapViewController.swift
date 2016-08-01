@@ -13,7 +13,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     // Constants and variables
     let mapView = MKMapView() // creates mapView programmatically
-    var isHighLighted = false // to highlight and unhighlight button
+    var annotationPins = [MKPointAnnotation]()
+    var count = 0
 
     // View Controller lifecycle
     override func viewDidLoad() {
@@ -53,26 +54,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         leadingConstraint.active = true
         trailingConstraint.active = true
         
-        // Setting map view
-        let latitude:CLLocationDegrees = 33.6086549608 //insert latitutde
+
         
-        let longitude:CLLocationDegrees = -117.929614227 //insert longitude
-        
-        let latDelta:CLLocationDegrees = 0.002
-        
-        let lonDelta:CLLocationDegrees = 0.002
-        
-        let span:MKCoordinateSpan = MKCoordinateSpanMake(latDelta, lonDelta)
-        
-        let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
-        
-        let region:MKCoordinateRegion = MKCoordinateRegionMake(location, span)
-        
-        mapView.setRegion(region, animated: true)
+        mapView.setRegion(makeRegion(CLLocationCoordinate2D(latitude: 33.6086549608, longitude: -117.929614227)), animated: true)
         
         // Creating Pins
         let dropPin = MKPointAnnotation()
-        dropPin.coordinate = location
+        dropPin.coordinate = CLLocationCoordinate2D(latitude: 33.6086549608, longitude: -117.929614227)
         dropPin.title = "Newport Beach"
         dropPin.subtitle = "Pokemon Go ^^"
         mapView.addAnnotation(dropPin)
@@ -88,6 +76,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         dropPin3.title = "Restaurants"
         dropPin3.subtitle = "PokeStops"
         mapView.addAnnotation(dropPin3)
+        
+        annotationPins.append(dropPin)
+        annotationPins.append(dropPin2)
+        annotationPins.append(dropPin3)
         
         // create a button programmatically
         let btn: UIButton = UIButton(frame: CGRectMake(100, 400, 100, 50))
@@ -112,6 +104,22 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     // Methods
+    func makeRegion(latLong: CLLocationCoordinate2D) -> MKCoordinateRegion {
+        // Setting map view
+        
+        let latDelta:CLLocationDegrees = 0.002
+        
+        let lonDelta:CLLocationDegrees = 0.002
+        
+        let span:MKCoordinateSpan = MKCoordinateSpanMake(latDelta, lonDelta)
+        
+        let location:CLLocationCoordinate2D = latLong
+        
+        let region:MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+        
+        return region
+    }
+    
     func mapTypeChanged(segControl: UISegmentedControl) {
         switch segControl.selectedSegmentIndex {
         case 0:
@@ -126,14 +134,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func cycleAnnotations(sender: UIButton) {
-        if isHighLighted == false {
-            sender.highlighted = true;
-            isHighLighted = true
-        } else {
-            sender.highlighted = false;
-            isHighLighted = false
+        count += 1;
+        if count > 2 {
+            count = 0
         }
-        print("cycling")
+        mapView.setRegion(makeRegion(annotationPins[count].coordinate), animated:  true)
     }
     
     
