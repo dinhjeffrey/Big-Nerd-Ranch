@@ -72,10 +72,24 @@ class ItemsTableViewController: UITableViewController {
         print("row is \(indexPath.row)")
         let cellTitle = items[indexPath.section][indexPath.row]
         
+        
+        
         cell.textLabel?.text = cellTitle.name
         if let dollars = cellTitle.valueInDollars {
             cell.detailTextLabel?.text = "$\(dollars)"
             cell.textLabel?.font = UIFont(name: "Avenir", size: 20)
+            
+            // adds image
+            let image = UIImage(named: "Icon-60")
+            var imageView = UIImageView(image: image!)
+            imageView = UIImageView(frame: CGRectMake(0, 0, 50, 50))
+            
+            
+            cell.imageView!.layer.cornerRadius = imageView.frame.size.height / 1.70
+            cell.imageView!.layer.borderWidth = 0
+            cell.imageView!.clipsToBounds = true
+            
+            cell.imageView?.image = image
         } else {
             cell.detailTextLabel?.text = ""
         }
