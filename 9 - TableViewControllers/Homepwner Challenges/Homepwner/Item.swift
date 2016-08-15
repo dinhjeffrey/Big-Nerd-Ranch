@@ -10,12 +10,12 @@ import UIKit
 
 class Item: NSObject {
     var name: String
-    var valueInDollars: Int
+    var valueInDollars: Int?
     var serialNumber: String?
     let dateCreated: NSDate
     
     //designated initializer (primary)
-    init(name: String, serialNumber: String?, valueInDollars: Int) {
+    init(name: String, serialNumber: String?, valueInDollars: Int?) {
         self.name = name
         self.valueInDollars = valueInDollars
         self.serialNumber = serialNumber

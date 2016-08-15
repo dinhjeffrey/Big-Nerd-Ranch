@@ -38,6 +38,8 @@ class ItemsTableViewController: UITableViewController {
                 itemsSeperatedByValue[1].append(item)
             }
         }
+        let lastItem = Item(name: "No more items!", serialNumber: nil, valueInDollars: nil)
+        itemsSeperatedByValue[1].append(lastItem)
         self.items = itemsSeperatedByValue
     }
     
@@ -71,7 +73,11 @@ class ItemsTableViewController: UITableViewController {
         let cellTitle = items[indexPath.section][indexPath.row]
         
         cell.textLabel?.text = cellTitle.name
-        cell.detailTextLabel?.text = "$\(cellTitle.valueInDollars)"
+        if let dollars = cellTitle.valueInDollars {
+            cell.detailTextLabel?.text = "$\(dollars)"
+        } else {
+            cell.detailTextLabel?.text = ""
+        }
         
         return cell
     }
