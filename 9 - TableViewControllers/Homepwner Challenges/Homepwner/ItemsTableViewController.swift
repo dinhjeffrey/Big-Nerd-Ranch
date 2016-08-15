@@ -75,6 +75,7 @@ class ItemsTableViewController: UITableViewController {
         cell.textLabel?.text = cellTitle.name
         if let dollars = cellTitle.valueInDollars {
             cell.detailTextLabel?.text = "$\(dollars)"
+            cell.textLabel?.font = UIFont(name: "Avenir", size: 20)
         } else {
             cell.detailTextLabel?.text = ""
         }
@@ -84,6 +85,14 @@ class ItemsTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("selected section: \(indexPath.section) row: \(indexPath.row)")
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let lastIndex = NSIndexPath(forRow: items[1].count-1, inSection: 1)
+        if indexPath == lastIndex {
+            return 44
+        }
+        return 60
     }
 }
 
